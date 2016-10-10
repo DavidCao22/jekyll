@@ -3,8 +3,11 @@ require "json"
 require "date"
 require "liquid"
 
+require_all "jekyll/filters"
+
 module Jekyll
   module Filters
+    include URLFilters
     # Convert a Markdown string into HTML output.
     #
     # input - The Markdown String to convert.
@@ -233,11 +236,11 @@ module Jekyll
     #
     # Returns the filtered array of objects
     def where(input, property, value)
-      return input unless input.is_a?(Enumerable)
+      return input unless input.respond_to?(:select)
       input = input.values if input.is_a?(Hash)
       input.select do |object|
         Array(item_property(object, property)).map(&:to_s).include?(value.to_s)
-      end
+      end || []
     end
 
     # Filters an array of objects against an expression
@@ -248,7 +251,7 @@ module Jekyll
     #
     # Returns the filtered array of objects
     def where_exp(input, variable, expression)
-      return input unless input.is_a?(Enumerable)
+      return input unless input.respond_to?(:select)
       input = input.values if input.is_a?(Hash) # FIXME
 
       condition = parse_condition(expression)
@@ -257,7 +260,18 @@ module Jekyll
           @context[variable] = object
           condition.evaluate(@context)
         end
-      end
+      end || []
+    end
+
+    # Convert the input into integer
+    #
+    # input - the object string
+    #
+    # Returns the integer value
+    def to_integer(input)
+      return 1 if input == true
+      return 0 if input == false
+      input.to_i
     end
 
     # Sort an array of objects
@@ -362,8 +376,8 @@ module Jekyll
       when Numeric
         Time.at(input)
       else
-        Jekyll.logger.error "Invalid Date:", "'#{input}' is not a valid datetime."
-        exit(1)
+        raise Errors::InvalidDateError,
+          "Invalid Date: '#{input.inspect}' is not a valid datetime."
       end.localtime
     end
 

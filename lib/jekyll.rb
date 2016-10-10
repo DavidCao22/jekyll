@@ -41,7 +41,6 @@ module Jekyll
   autoload :Convertible,         "jekyll/convertible"
   autoload :Deprecator,          "jekyll/deprecator"
   autoload :Document,            "jekyll/document"
-  autoload :Draft,               "jekyll/draft"
   autoload :EntryFilter,         "jekyll/entry_filter"
   autoload :Errors,              "jekyll/errors"
   autoload :Excerpt,             "jekyll/excerpt"
@@ -55,6 +54,7 @@ module Jekyll
   autoload :PostReader,          "jekyll/readers/post_reader"
   autoload :PageReader,          "jekyll/readers/page_reader"
   autoload :StaticFileReader,    "jekyll/readers/static_file_reader"
+  autoload :ThemeAssetsReader,   "jekyll/readers/theme_assets_reader"
   autoload :LogAdapter,          "jekyll/log_adapter"
   autoload :Page,                "jekyll/page"
   autoload :PluginManager,       "jekyll/plugin_manager"
@@ -101,6 +101,7 @@ module Jekyll
     # Returns the final configuration Hash.
     def configuration(override = {})
       config = Configuration.new
+      override = Configuration[override].stringify_keys
       unless override.delete("skip_config_files")
         config = config.read_config_files(config.config_files(override))
       end
@@ -159,11 +160,13 @@ module Jekyll
 
       questionable_path.insert(0, "/") if questionable_path.start_with?("~")
       clean_path = File.expand_path(questionable_path, "/")
-      clean_path.sub!(%r!\A\w:/!, "/")
 
-      if clean_path.start_with?(base_directory.sub(%r!\A\w:/!, "/"))
+      return clean_path if clean_path.eql?(base_directory)
+
+      if clean_path.start_with?(base_directory.sub(%r!\z!, "/"))
         clean_path
       else
+        clean_path.sub!(%r!\A\w:/!, "/")
         File.join(base_directory, clean_path)
       end
     end

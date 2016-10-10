@@ -10,12 +10,12 @@ Jekyll as a special file. The front matter must be the first thing in the file
 and must take the form of valid YAML set between triple-dashed lines. Here is a
 basic example:
 
-{% highlight yaml %}
+```yaml
 ---
 layout: post
 title: Blogging Like a Hacker
 ---
-{% endhighlight %}
+```
 
 Between these triple-dashed lines, you can set predefined variables (see below
 for a reference) or even create custom ones of your own. These variables will
@@ -108,7 +108,7 @@ data that is sent to the Liquid templating engine during the conversion. For
 instance, if you set a title, you can use that in your layout to set the page
 title:
 
-{% highlight html %}
+```html
 <!DOCTYPE HTML>
 <html>
   <head>
@@ -116,7 +116,7 @@ title:
   </head>
   <body>
     ...
-{% endhighlight %}
+```
 
 ## Predefined Variables for Posts
 
@@ -156,7 +156,7 @@ These are available out-of-the-box to be used in the front matter for a post.
           more categories that the post belongs to. When the site is generated
           the post will act as though it had been set with these categories
           normally. Categories (plural key) can be specified as a <a
-          href="https://en.wikipedia.org/wiki/YAML#Lists">YAML list</a> or a
+          href="https://en.wikipedia.org/wiki/YAML#Basic_components">YAML list</a> or a
           comma-separated string.
 
         </p>
@@ -170,7 +170,8 @@ These are available out-of-the-box to be used in the front matter for a post.
         <p>
 
           Similar to categories, one or multiple tags can be added to a post.
-          Also like categories, tags can be specified as a YAML list or a
+          Also like categories, tags can be specified as a <a
+          href="https://en.wikipedia.org/wiki/YAML#Basic_components">YAML list</a> or a
           comma-separated string.
 
         </p>

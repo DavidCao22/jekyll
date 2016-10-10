@@ -1,13 +1,14 @@
 class Jekyll::ThemeBuilder
   SCAFFOLD_DIRECTORIES = %w(
-    _layouts _includes _sass
+    assets _layouts _includes _sass
   ).freeze
 
-  attr_reader :name, :path
+  attr_reader :name, :path, :code_of_conduct
 
-  def initialize(theme_name)
+  def initialize(theme_name, opts)
     @name = theme_name.to_s.tr(" ", "_").gsub(%r!_+!, "_")
     @path = Pathname.new(File.expand_path(name, Dir.pwd))
+    @code_of_conduct = !!opts["code_of_conduct"]
   end
 
   def create!
@@ -15,7 +16,6 @@ class Jekyll::ThemeBuilder
     create_starter_files
     create_gemspec
     create_accessories
-    create_example_site
     initialize_git_repo
   end
 
@@ -56,7 +56,6 @@ class Jekyll::ThemeBuilder
 
   def create_directories
     mkdir_p(SCAFFOLD_DIRECTORIES)
-    mkdir_p(%w(example example/_posts))
   end
 
   def create_starter_files
@@ -71,19 +70,11 @@ class Jekyll::ThemeBuilder
   end
 
   def create_accessories
-    %w(README.md Rakefile CODE_OF_CONDUCT.md LICENSE.txt).each do |filename|
+    accessories = %w(README.md LICENSE.txt)
+    accessories << "CODE_OF_CONDUCT.md" if code_of_conduct
+    accessories.each do |filename|
       write_file(filename, template(filename))
     end
-  end
-
-  def create_example_site
-    %w(example/_config.yml example/index.html example/style.scss).each do |filename|
-      write_file(filename, template(filename))
-    end
-    write_file(
-      "example/_posts/#{Time.now.strftime("%Y-%m-%d")}-my-example-post.md",
-      template("example/_post.md")
-    )
   end
 
   def initialize_git_repo

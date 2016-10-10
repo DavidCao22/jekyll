@@ -29,10 +29,10 @@ module Jekyll
 
       Jekyll.sites << self
 
-      Jekyll::Hooks.trigger :site, :after_init, self
-
       reset
       setup
+
+      Jekyll::Hooks.trigger :site, :after_init, self
     end
 
     # Public: Set the site's configuration. This handles side-effects caused by
@@ -170,7 +170,10 @@ module Jekyll
     # Returns nothing.
     def generate
       generators.each do |generator|
+        start = Time.now
         generator.generate(self)
+        Jekyll.logger.debug "Generating:",
+          "#{generator.class} finished in #{Time.now - start} seconds."
       end
     end
 
@@ -421,7 +424,16 @@ module Jekyll
     private
     def configure_theme
       self.theme = nil
-      self.theme = Jekyll::Theme.new(config["theme"]) if config["theme"]
+      return if config["theme"].nil?
+
+      self.theme =
+        if config["theme"].is_a?(String)
+          Jekyll::Theme.new(config["theme"])
+        else
+          Jekyll.logger.warn "Theme:", "value of 'theme' in config should be " \
+          "String to use gem-based themes, but got #{config["theme"].class}"
+          nil
+        end
     end
 
     private

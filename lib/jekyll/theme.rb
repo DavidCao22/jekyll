@@ -10,19 +10,27 @@ module Jekyll
     end
 
     def root
-      @root ||= gemspec.full_gem_path
+      # Must use File.realpath to resolve symlinks created by rbenv
+      # Otherwise, Jekyll.sanitized path with prepend the unresolved root
+      @root ||= File.realpath(gemspec.full_gem_path)
+    rescue Errno::ENOENT, Errno::EACCES, Errno::ELOOP
+      nil
     end
 
     def includes_path
-      path_for :includes
+      path_for "_includes".freeze
     end
 
     def layouts_path
-      path_for :layouts
+      path_for "_layouts".freeze
     end
 
     def sass_path
-      path_for :sass
+      path_for "_sass".freeze
+    end
+
+    def assets_path
+      path_for "assets".freeze
     end
 
     def configure_sass
@@ -34,15 +42,12 @@ module Jekyll
     private
 
     def path_for(folder)
-      resolved_dir = realpath_for(folder)
-      return unless resolved_dir
-
-      path = Jekyll.sanitized_path(root, resolved_dir)
-      path if File.directory?(path)
+      path = realpath_for(folder)
+      path if path && File.directory?(path)
     end
 
     def realpath_for(folder)
-      File.realpath(Jekyll.sanitized_path(root, "_#{folder}"))
+      File.realpath(Jekyll.sanitized_path(root, folder.to_s))
     rescue Errno::ENOENT, Errno::EACCES, Errno::ELOOP
       nil
     end
