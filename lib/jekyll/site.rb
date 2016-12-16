@@ -191,11 +191,7 @@ module Jekyll
       render_pages(payload)
 
       Jekyll::Hooks.trigger :site, :post_render, self, payload
-    # rubocop: disable HandleExceptions
-    rescue Errno::ENOENT
-      # ignore missing layout dir
     end
-    # rubocop: enable HandleExceptions
 
     # Remove orphaned files and empty directories in destination.
     #
@@ -306,7 +302,7 @@ module Jekyll
         Jekyll.logger.abort_with "Since v3.0, permalinks for pages" \
                                 " in subfolders must be relative to the" \
                                 " site source directory, not the parent" \
-                                " directory. Check http://jekyllrb.com/docs/upgrading/"\
+                                " directory. Check https://jekyllrb.com/docs/upgrading/"\
                                 " for more info."
       end
     end

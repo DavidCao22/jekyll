@@ -18,11 +18,11 @@ end
 #
 
 group :test do
-  gem "rubocop"
+  gem "rubocop", "~> 0.44.1"
   gem "cucumber", "~> 2.1"
   gem "jekyll_test_plugin"
   gem "jekyll_test_plugin_malicious"
-  gem "codeclimate-test-reporter"
+  gem "codeclimate-test-reporter", "~> 0.6.0"
   gem "rspec-mocks"
   gem "nokogiri"
   gem "rspec"
@@ -79,6 +79,9 @@ group :jekyll_optional_dependencies do
     gem "classifier-reborn", "~> 2.0"
     gem "liquid-c", "~> 3.0"
   end
+
+  # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
+  gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 end
 
 #

@@ -2,7 +2,95 @@
 
 ### Site Enhancements
 
-  * Documentation: {% link %} tag  (#5449)
+  * Remove instructions to install Jekyll 2 on Windows (#5582)
+  * Fix example URL inconsistency (#5592)
+  * Replace backticks within HTML blocks with HTML tags (#5435)
+  * Add jekyll-migrate-permalink (#5600)
+  * Fix bad config YAML in collections example (#5587)
+  * Bring documentation on 'Directory Structure' up-to-date (#5573)
+  * Use only the used Font Awesome icons. (#5530)
+  * Switch to `https` when possible. (#5611)
+  * Update `_font-awesome.scss` to move .woff file before .ttf (#5614)
+
+### Minor Enhancements
+
+  * Add connector param to array_to_sentence_string filter (#5597)
+  * Adds group_by_exp filter (#5513)
+
+### Bug Fixes
+
+  * Escaped regular expressions when using post_url. (#5605)
+  * fix date parsing in file names to be stricter (#5609)
+  * Add a module to re-define `ENV["TZ"]` in Windows (#5612)
+
+### Development Fixes
+
+  * clean unit-test names in `test/test_tags.rb` (#5608)
+  * Add cucumber feature to test for bonafide theme gems (#5384)
+  * Use `assert_nil` instead of `assert_equal nil` (#5652)
+
+### Documentation
+
+  * Fixed typo (#5632)
+  * use backticks for Gemfile for consistency since in the next sentence … (#5641)
+  * Update Core team list in the README file (#5643)
+  * Improve Permalinks documentation. (#5653)
+  * Fix typo in Variables doc page (#5657)
+  * Fix a couple of typos in the docs (#5658)
+
+## 3.3.1 / 2016-11-14
+
+### Minor Enhancements
+
+  * Collapse `gsub` for performance (#5494)
+  * URL: warn if key doesn't exist in url drop (#5524)
+
+### Bug Fixes
+
+  * Fix typo in `theme_template` README (#5472)
+  * Do not swallow all exceptions on render (#5495)
+  * Site template: fixed `_config.yml` comment typo (#5511)
+  * `jekyll new-theme` should specify Jekyll as a runtime dependency for the theme (#5457)
+  * Be much more specific about ignoring specific vendored directories. (#5564)
+  * Only warn about auto-regeneration bug on Bash On Windows. (#5464)
+  * Allow permalink template to have underscores (#5572)
+
+### Site Enhancements
+
+  * Documentation: `link` Liquid tag  (#5449)
+  * Updating install instruction link for Jekyll 3 on Windows (#5475)
+  * Update normalize.css to v5.0.0 (#5471)
+  * Add jekyll-data to the list of plugins (#5491)
+  * Add info about checking version + updating (#5497)
+  * Add jekyll-include-absolute-plugin to list of third-party plugins (#5492)
+  * Remove jekyll-hook from deployment methods (#5502)
+  * Update deployment-methods.md (#5504)
+  * Ubuntu users should install ruby2.3-dev (#5512)
+  * Remove Glynn as deployment option (#5519)
+  * Fix broken forum link (#5466)
+  * Move documentation to docs folder (#5459)
+  * Fix broken links in CONTRIBUTING (#5533)
+  * Update documentation on jekyllrb.com (#5540)
+  * Fix HTML rendering (#5536)
+  * Remove outdated deployment information (#5557)
+  * no more invalid US-ASCII on lines 30 and 97 (#5520)
+  * Add permalinks to docs in '/maintaining/' (#5532)
+  * Add jekyll-pinboard to list of third-party plugins (#5514)
+  * Fix formatting in 2-to-3.md (#5507)
+  * Add two plugins to the plugins page (#5493)
+  * Use site.baseurl before link and post_url tags (#5559)
+  * Fix link to jekyll-pinboard plugin (#5570)
+  * mention `docs` folder as a way to deploy on GitHub Pages (#5571)
+
+### Development Fixes
+
+  * fix rubocop errors on testing with Rubocop 0.44 (#5489)
+  * script/test: add missing whitespace (#5479)
+  * Restrict Rubocop version (#5496)
+  * include a hashbang for all benchmark scripts & make them executable (#5505)
+  * Update source in script/proof (#5538)
+  * Collections.feature: conditional steps to have it pass on Windows (#5546)
+  * Fix tests to get script/test to pass on Windows (#5526)
 
 ## 3.3.0 / 2016-10-06
 
