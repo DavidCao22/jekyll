@@ -542,7 +542,7 @@ You can also use the `link` tag to create a link in Markdown as follows:
 
 The path to the post, page, or collection is defined as the path relative to the root directory (where your config file is) to the file, not the path from your existing page to the other page.
 
-For example, suppose you're creating a link `page_a.md` (stored in `pages/folder1/folder2`) to `page_b.md` (stored in  `pages/folder1`). Your path in the link would not be `../page_b.html`. Instead, it would be `/pages/folder1/page_b.md`.
+For example, suppose you're creating a link in `page_a.md` (stored in `pages/folder1/folder2`) to `page_b.md` (stored in  `pages/folder1`). Your path in the link would not be `../page_b.html`. Instead, it would be `/pages/folder1/page_b.md`.
 
 If you're unsure of the path, add `{% raw %}{{ page.path }}{% endraw %}` to the page and it will display the path.
 
@@ -552,7 +552,7 @@ Note you cannot add filters to `link` tags. For example, you cannot append a str
 
 ### Linking to posts
 
-If you want like to include a link to a post on your site, the `post_url` tag will generate the correct permalink URL for the post you specify.
+If you want to include a link to a post on your site, the `post_url` tag will generate the correct permalink URL for the post you specify.
 
 ```liquid
 {% raw %}
