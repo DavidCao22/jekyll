@@ -1,4 +1,4 @@
-# encoding: UTF-8
+# frozen_string_literal: true
 
 require "set"
 
@@ -160,7 +160,7 @@ module Jekyll
     #
     # Returns true if extname == .coffee, false otherwise.
     def coffeescript_file?
-      ".coffee" == ext
+      ext == ".coffee"
     end
 
     # Determine whether the file should be rendered with Liquid.
@@ -172,9 +172,10 @@ module Jekyll
 
     # Determine whether the file should be placed into layouts.
     #
-    # Returns false if the document is an asset file.
+    # Returns false if the document is an asset file or if the front matter
+    #   specifies `layout: none`
     def place_in_layout?
-      !asset_file?
+      !(asset_file? || no_layout?)
     end
 
     # Checks if the layout specified in the document actually exists
@@ -244,8 +245,13 @@ module Jekyll
     end
 
     private
+
     def _renderer
       @_renderer ||= Jekyll::Renderer.new(site, self)
+    end
+
+    def no_layout?
+      data["layout"] == "none"
     end
   end
 end

@@ -1,4 +1,4 @@
-# encoding: UTF-8
+# frozen_string_literal: true
 
 module Jekyll
   class Configuration < Hash
@@ -8,6 +8,7 @@ module Jekyll
       # Where things are
       "source"              => Dir.pwd,
       "destination"         => File.join(Dir.pwd, "_site"),
+      "collections_dir"     => "",
       "plugins_dir"         => "_plugins",
       "layouts_dir"         => "_layouts",
       "data_dir"            => "_data",
@@ -47,7 +48,7 @@ module Jekyll
       "detach"              => false, # default to not detaching the server
       "port"                => "4000",
       "host"                => "127.0.0.1",
-      "baseurl"             => "",
+      "baseurl"             => nil, # this mounts at /, i.e. no subdirectory
       "show_dir_listing"    => false,
 
       # Output Configuration
@@ -155,7 +156,7 @@ module Jekyll
       )
 
       # Get configuration from <source>/_config.yml or <source>/<config_file>
-      config_files = override.delete("config")
+      config_files = override["config"]
       if config_files.to_s.empty?
         default = %w(yml yaml).find(-> { "yml" }) do |ext|
           File.exist?(Jekyll.sanitized_path(source(override), "_config.#{ext}"))
