@@ -14,15 +14,10 @@ Installing Jekyll should be straight-forward if all requirements are met.
 Before you start, make sure your system has the following:
 
 - GNU/Linux, Unix, or macOS
-- [Ruby](https://www.ruby-lang.org/en/downloads/) version 2.1 or above, including all development
-  headers
-- [RubyGems](https://rubygems.org/pages/download)
-- [GCC](https://gcc.gnu.org/install/) and [Make](https://www.gnu.org/software/make/) (in case your system doesn't have them installed, which you can check by running `gcc -v` and `make -v` in your system's command line interface)
-
-#### Only required for Jekyll 2 and earlier
-
-- [NodeJS](https://nodejs.org/), or another JavaScript runtime (for CoffeeScript support).
-- [Python 2.7](https://www.python.org/downloads/)
+- [Ruby](https://www.ruby-lang.org/en/downloads/) version 2.2.5 or above, including all development
+  headers (ruby installation can be checked by running `ruby -v`, development headers can be checked on Ubuntu by running `apt list --installed  ruby-dev`)
+- [RubyGems](https://rubygems.org/pages/download) (which you can check by running `gem -v`)
+- [GCC](https://gcc.gnu.org/install/) and [Make](https://www.gnu.org/software/make/) (in case your system doesn't have them installed, which you can check by running `gcc -v`,`g++ -v`  and `make -v` in your system's command line interface)
 
 <div class="note info">
   <h5>Problems installing Jekyll?</h5>

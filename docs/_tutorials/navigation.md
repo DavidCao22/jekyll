@@ -94,18 +94,22 @@ Suppose you wanted to sort the list by the `title`. To do this, convert the refe
 {% raw %}
 ```liquid
 {% assign doclist = site.data.samplelist.docs | sort: 'title'  %}
+<ol>
 {% for item in doclist %}
     <li><a href="{{ item.url }}" alt="{{ item.title }}">{{ item.title }}</a></li>
 {% endfor %}
+</ol>
 ```
 {% endraw %}
 
 **Result**
 
 <div class="highlight result">
-   <li><a href="#" alt="Configuration">Configuration</a></li>
-   <li><a href="#" alt="Deployment">Deployment</a></li>
-   <li><a href="#" alt="Introduction">Introduction</a></li>
+   <ol>
+      <li><a href="#" alt="Configuration">Configuration</a></li>
+      <li><a href="#" alt="Deployment">Deployment</a></li>
+      <li><a href="#" alt="Introduction">Introduction</a></li>
+   </ol>
 </div>
 
 The items now appear in alphabetical order. The `sort` property in the Liquid filter applies to the `title`, which is an actual property in the list. If `title` weren't a property, we would need to sort by another property.
@@ -401,7 +405,7 @@ In this case, assume `Deployment` is the current page.
 
 To make sure the `item.url` (stored in the YAML file) matches the `page.url`, it can be helpful to print the `{% raw %}{{ page.url }}{% endraw %}` to the page.
 
-## Scenario 6: Including items conditionally
+## Scenario 7: Including items conditionally
 
 You might want to include items conditionally in your list. For example, maybe you have multiple site outputs and only want to include the sidebar item for certain outputs. You can add properties in each list item and then use those properties to conditionally include the content.
 
@@ -427,7 +431,7 @@ docs2:
 
 {% raw %}
 ```liquid
-<ul>
+  <ul>
     {% for item in site.data.samplelist.docs2 %}
       {% if item.version == 1 %}
         <li><a href="{{ item.url }}">{{ item.title }}</a></li>
@@ -448,7 +452,7 @@ docs2:
 
 The `Deployment` page is excluded because its `version` is `2`.
 
-## Scenario 7: Retrieving items based on front matter properties
+## Scenario 8: Retrieving items based on front matter properties
 
 If you don't want to store your navigation items in a YAML file in your `_data` folder, you can use `for` loops to look through the YAML front matter of each page or collection and get the content based on properties in the front matter.
 
