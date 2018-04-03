@@ -1,3 +1,80 @@
+## HEAD
+
+### Development Fixes
+
+  * move duplicate code to a single private method (#6593)
+  * Test against Ruby 2.5 on AppVeyor (#6668)
+  * Replace simple regex with a native Ruby method (#6732)
+  * Codeclimate: exclude livereload.js (#6776)
+  * Add a cucumber feature to test link tag (#6777)
+  * Fix theme gem feature (#6784)
+  * Replace simple regex with equivalent Ruby methods (#6736)
+  * Rewrite `script/rubyprof` as a Ruby script (#6813)
+  * Add debug output to theme rendering (#5195)
+  * fix minitest deprecation warning in test (#6839)
+  * Memoize `Site#site_data` (#6809)
+  * Memoize document output extension (#6814)
+  * Access document permalink attribute efficiently (#6740)
+  * Minimize array allocations in the `where` filter (#6860)
+  * Bump JRuby (#6878)
+
+### Minor Enhancements
+
+  * Two massive performance improvements for large sites (#6730)
+  * Cache the list of documents to be written (#6741)
+  * Allow Jekyll Doctor to detect stray posts dir (#6681)
+  * Excerpt relative-path should match its path (#6597)
+  * Remind user to resolve conflict in `jekyll new` with `--force` (#6801)
+  * Memoize helper methods in site-cleaner (#6808)
+  * Compute document&#39;s relative_path faster (#6767)
+  * Create a single instance of PostReader per site (#6759)
+  * Allow date filters to output ordinal days (#6773)
+  * Change regex to sanitize and normalize filenames passed to LiquidRenderer (#6610)
+  * Allow passing :strict_variables and :strict_filters options to Liquid&#39;s renderer (#6726)
+  * Debug writing files during the build process (#6696)
+  * Improve regex usage in `Tags::IncludeTag` (#6848)
+
+### Documentation
+
+  * Adding the jekyll-algolia plugin to the list of plugins (#6737)
+  * Added Premonition plugin to list of plugins (#6750)
+  * Add document on releasing a new version (#6745)
+  * Mention Talkyard, a new commenting system for Jekyll and others. (#6752)
+  * Add &#39;jekyll-fontello&#39; to plugins (#6757)
+  * Install dh-autoreconf on Windows (#6765)
+  * Fix common typos (#6764)
+  * Fix documentation for `{{ page.excerpt }}` (#6779)
+  * Update docs on permalink configuration (#6775)
+  * Propose fix some typos (#6785)
+  * Say hello to Jekyll&#39;s New Lead Developer (#6790)
+  * Add reference to Liquid to plugin docs (#6794)
+  * Draft a release post for v3.7.3 (#6803)
+  * add missing step for gem-based theme conversion (#6802)
+  * Update windows.md to explain an issue with jekyll new. (#6838)
+  * Add Bundler Installation Instructions (#6828)
+  * Docs: describe difference between tags and categories (#6882)
+  * Add `jekyll-random` plugin to docs (#6833)
+
+### Site Enhancements
+
+  * Remove links to Gists (#6751)
+  * Always load Google Fonts over HTTPS (#6792)
+  * always load analytics.js over HTTPS (#6807)
+
+### Bug Fixes
+
+  * Append appropriate closing tag to Liquid block in an excerpt ### -minor (#6724)
+  * Bypass rendering via Liquid unless required (#6735)
+  * Delegated methods after `private` keyword are meant to be private (#6819)
+  * Improve handling non-default collection documents rendering and writing (#6795)
+  * Fix passing multiline params to include tag when using the variable syntax  (#6858)
+
+## 3.7.3 / 2018-02-25
+
+### Bug Fixes
+
+  * Do not hardcode locale unless certainly necessary (#6791)
+
 ## 3.7.2 / 2018-01-25
 
 ### Development Fixes
@@ -28,7 +105,7 @@
   * inform that symlinks are not allowed in safe mode (#6670)
   * Glob scope path only if configured with a pattern (#6692)
   * Add gem &#34;wdm&#34; to all newly generated Gemfiles (#6711)
-  * Fix timezone incosistencies between different ruby version (#6697)
+  * Fix timezone inconsistencies between different ruby version (#6697)
   * Refactor collections_dir feature for consistency (#6685)
 
 ### Minor Enhancements
@@ -129,7 +206,7 @@
   * Add jekyll-pwa-plugin (#6533)
   * Remove Jekyll-Smartify from plugins directory (#6548)
   * Updated Jekyll-Pug listing to include official website (#6555)
-  * Remove link to severly outdated asset plugin (#6613)
+  * Remove link to severely outdated asset plugin (#6613)
   * Default time zone depends upon server (#6617)
   * Add `disqus-for-jekyll` to plugins. (#6618)
   * Update &#34;Requirements&#34; for Ruby version (#6623)
@@ -706,9 +783,9 @@
   * Update appveyor.yml and fix optional deps for Ruby x64 (#5180)
   * Improve tests for Jekyll::PluginManager (#5167)
   * Update Ruby versions in travis.yml (#5221)
-  * Avoid installing unecessary gems for site testing (#5272)
+  * Avoid installing unnecessary gems for site testing (#5272)
   * Proposal: Affinity teams and their captains (#5273)
-  * Replace duplicate with postive local test in issue template (#5286)
+  * Replace duplicate with positive local test in issue template (#5286)
   * Update AppVeyor config. (#5240)
   * Execute jekyll from clone instead of defined binary when running 'script/default-site' (#5295)
   * rubocop: lib/jekyll/document.rb complexity fixes (#5045)
@@ -752,7 +829,7 @@
   * Allow collections to have documents that have no file extension (#4545)
   * Add size property to `group_by` result (#4557)
   * Site Template: Removed unnecessary nesting from `_base.scss` (#4637)
-  * Adding a debug log statment for skipped future documents. (#4558)
+  * Adding a debug log statement for skipped future documents. (#4558)
   * Site Template: Changed main `<div>` to `<main>` and added accessibility info (#4636)
   * Add array support to `where` filter (#4555)
   * 'jekyll clean': also remove .sass-cache (#4652)
@@ -1061,7 +1138,7 @@
   * utils/drops: update Drop to support `Utils.deep_merge_hashes` (#4289)
   * Make sure jekyll/drops/drop is loaded first. (#4292)
   * Convertible/Page/Renderer: use payload hash accessor & setter syntax for backwards-compatibility (#4311)
-  * Drop: fix hash setter precendence (#4312)
+  * Drop: fix hash setter precedence (#4312)
   * utils: `has_yaml_header?` should accept files with extraneous spaces (#4290)
   * Escape html from site.title and page.title in site template (#4307)
   * Allow custom file extensions if defined in `permalink` YAML front matter (#4314)
