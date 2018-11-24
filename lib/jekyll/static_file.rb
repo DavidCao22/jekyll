@@ -98,6 +98,7 @@ module Jekyll
       dest_path = destination(dest)
 
       return false if File.exist?(dest_path) && !modified?
+
       self.class.mtimes[path] = mtime
 
       FileUtils.mkdir_p(File.dirname(dest_path))
@@ -133,10 +134,10 @@ module Jekyll
       @url ||= if @collection.nil?
                  relative_path
                else
-                 ::Jekyll::URL.new({
+                 ::Jekyll::URL.new(
                    :template     => @collection.url_template,
-                   :placeholders => placeholders,
-                 })
+                   :placeholders => placeholders
+                 )
                end.to_s.chomp("/")
     end
 
@@ -152,6 +153,7 @@ module Jekyll
     end
 
     private
+
     def copy_file(dest_path)
       if @site.safe || Jekyll.env == "production"
         FileUtils.cp(path, dest_path)

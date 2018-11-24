@@ -14,8 +14,10 @@ matrix:
   include:
     - rvm: *ruby1
       env: TEST_SUITE=fmt
+      name: "🤖️ Code Format"
     - rvm: *ruby1
       env: TEST_SUITE=default-site
+      name: "🏠️ Default Site"
   exclude:
     - rvm: *jruby
       env: TEST_SUITE=cucumber
@@ -28,7 +30,8 @@ branches:
   only:
     - master
     - themes
-    - /*-stable/
+    - /^.*-stable/
+    - /.*backport.*/
 
 notifications:
   slack:

@@ -95,11 +95,11 @@ module Jekyll
     #
     # Returns the String url.
     def url
-      @url ||= URL.new({
+      @url ||= URL.new(
         :template     => template,
         :placeholders => url_placeholders,
-        :permalink    => permalink,
-      }).to_s
+        :permalink    => permalink
+      ).to_s
     end
 
     # Returns a hash of URL placeholder names (as symbols) mapping to the
@@ -161,7 +161,7 @@ module Jekyll
 
     # Returns the object as a debug String.
     def inspect
-      "#<Jekyll::Page @name=#{name.inspect}>"
+      "#<#{self.class} @name=#{name.inspect}>"
     end
 
     # Returns the Boolean of whether this Page is HTML or not.
