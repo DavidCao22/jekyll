@@ -81,6 +81,23 @@
   * Fix content management section (#7385)
   * Site: Better Performance (#7388)
   * Proposed re-wording of Sass note. :) (#7392)
+  * Apply ruby official guide documents (#7393)
+  * docs: Fix group_by_exp filter example (#7394)
+  * adjust team page listings (#7395)
+  * Update resources.md (#7396)
+  * Update resources.md (#7397)
+  * Remove alt attribute from a tags (#7407)
+  * Fix grammatical error in permalinks.md (#7409)
+  * [Docs] Fix BASH code-block in ubuntu.md (#7420)
+  * zlib is missing (#7428)
+  * Include docs for `{{ page.collection }}` (#7430)
+  * Permalink docs typo fixes (#7459)
+  * Fixed unnecessary aticles and pronouns (#7466)
+  * Grammatical correction (#7464)
+  * Update resources.md (#7472)
+  * Docs: store SSL key and cert in site source (#7473)
+  * Minor doc fixes (#7495)
+  * Changed order of steps (#7503)
 
 ### Minor Enhancements
 
@@ -105,6 +122,10 @@
   * Load config file from within current theme-gem (#7304)
   * Memoize the return value of Site#documents (#7273)
   * Upgrade liquid-c to v4.0 (#7375)
+  * Add a custom inspect string for StaticFile objects (#7422)
+  * Remind user to include gem in the Gemfile on error (#7476)
+  * Search Front matter defaults for Page objects with relative_path (#7261)
+  * Support for binary operators in where_exp filter (#6998)
 
 ### Major Enhancements
 
@@ -153,6 +174,15 @@
   * CI(Appveyor): shallow clone with 5 last commits (#7312)
   * Bump RuboCop to v0.60.x (#7338)
   * Update excludes for CodeClimate Analyses (#7365)
+  * Switch to `:install_if` for wdm gem (#7372)
+  * Bump RuboCop to v0.61.x (#7401)
+  * dev: test oldest and latest Ruby only (#7412)
+  * Reduce array traversal in Jekyll::Reader (#7157)
+  * Create symlink only if target is accessible (#7429)
+  * Test with the new Ruby v2.6 (#7438)
+  * Bump RuboCop to v0.62.x (#7449)
+  * Relax version constraint on classifier-reborn gem (#7471)
+  * Update rubocop to ~&gt; 0.63.1 (#7489)
 
 ### Bug Fixes
 
@@ -164,6 +194,11 @@
   * Revert &#34;Cache converter in renderer&#34; (#7326)
   * Measure the no. of times a template gets rendered (#7316)
   * Re-implement handling Liquid blocks in excerpts (#7250)
+  * Theme gems: ensure directories aren&#39;t symlinks (#7419)
+  * Documents should be able to render their date (#7404)
+  * Fix Interpreter warning from Jekyll::Renderer (#7448)
+  * Dont write static files from unrendered collection (#7410)
+  * Excerpt handling of custom and intermediate tags (#7382)
 
 ### feature
 
@@ -175,6 +210,8 @@
   * Add Release Post for v3.6.3, v3.7.4 and v3.8.4 (#7259)
   * Fix link to Tidelift in site&#39;s footer (#7377)
   * :sparkles: Add a link to OpenCollective backing (#7378)
+  * Add @ashmaroli to Core Team listing (#7398)
+  * link site to sponsor listing in readme (#7405)
 
 ## 3.8.5 / 2018-11-04
 
